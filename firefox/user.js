@@ -224,7 +224,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // Enter your personal overrides below this line:
 
 user_pref("browser.startup.homepage", "about:newtab");
-user_pref("browser.startup.page", 1);
+user_pref("browser.startup.page", 3);
 user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
 user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includeBookmarks", false);
