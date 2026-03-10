@@ -27,8 +27,8 @@ phases=(
     "07-post.sh:Post-install tweaks (Firefox, GTK, MIME)"
 )
 
-info "Fedora Bootstrap — Arch Dotfiles Migration"
-info "============================================"
+info "Fedora Bootstrap — Hyprland + noctalia-shell"
+info "============================================="
 echo
 
 for entry in "${phases[@]}"; do

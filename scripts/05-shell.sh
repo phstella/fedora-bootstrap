@@ -3,16 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
-DOTFILES_DIR="$HOME/arch-dotfiles"
 
 info()  { printf '\033[1;34m[INFO]\033[0m  %s\n' "$*"; }
 warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
-
-# Ensure dotfiles are cloned before we need the .zshrc
-if [[ ! -d "$DOTFILES_DIR" ]]; then
-    info "Cloning dotfiles repo..."
-    git clone git@github.com:phstella/arch-dotfiles.git "$DOTFILES_DIR"
-fi
 
 current_shell="$(getent passwd "$USER" | cut -d: -f7)"
 if [[ "$current_shell" != */zsh ]]; then
@@ -25,19 +18,13 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-# Stow .zshrc from dotfiles after oh-my-zsh so it doesn't get overwritten
-if [[ -d "$DOTFILES_DIR" ]]; then
-    info "Stowing zsh config..."
-    cd "$DOTFILES_DIR"
-    if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
-        mv "$HOME/.zshrc" "$HOME/.zshrc.omz-default"
-        info "  Backed up oh-my-zsh default .zshrc -> .zshrc.omz-default"
-    fi
-    stow -v -t "$HOME" zsh
-else
-    warn "Dotfiles repo not found at $DOTFILES_DIR — skipping .zshrc stow."
-    warn "Clone it first: git clone git@github.com:phstella/arch-dotfiles.git ~/arch-dotfiles"
+info "Stowing zsh config..."
+cd "$REPO_DIR"
+if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
+    mv "$HOME/.zshrc" "$HOME/.zshrc.omz-default"
+    info "  Backed up oh-my-zsh default .zshrc -> .zshrc.omz-default"
 fi
+stow -v -t "$HOME" zsh
 
 # Fix zsh plugin paths for Fedora (Arch uses /usr/share/zsh/plugins/<name>/)
 ZSHRC="$HOME/.zshrc"

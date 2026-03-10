@@ -1,0 +1,203 @@
+[ColorEffects:Disabled]
+ChangeSelectionColor=
+Color=#2c2b2a
+ColorAmount=0
+ColorEffect=0
+ContrastAmount=0.65
+ContrastEffect=1
+Enable=
+IntensityAmount=0.1
+IntensityEffect=2
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=true
+Color=#3c3836
+ColorAmount=0.025
+ColorEffect=2
+ContrastAmount=0.1
+ContrastEffect=2
+Enable=false
+IntensityAmount=0
+IntensityEffect=0
+
+[Colors:Button]
+BackgroundAlternate=#32302f
+BackgroundNormal=#474240
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:Complementary]
+BackgroundAlternate=#32302f
+BackgroundNormal=#282828
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#f6f6d5
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:Header]
+BackgroundAlternate=#282828
+BackgroundNormal=#3c3836
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:Header][Inactive]
+BackgroundAlternate=#3c3836
+BackgroundNormal=#282828
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:Selection]
+BackgroundAlternate=#32302f
+BackgroundNormal=#b8bb26
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#282828
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#7d0d00
+ForegroundNeutral=#294d3f
+ForegroundNormal=#282828
+ForegroundPositive=#294d3f
+ForegroundVisited=#feefcd
+
+[Colors:Tooltip]
+BackgroundAlternate=#282828
+BackgroundNormal=#3c3836
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:View]
+BackgroundAlternate=#3c3836
+BackgroundNormal=#282828
+DecorationFocus=#f6f6d5
+DecorationHover=#282828
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[Colors:Window]
+BackgroundAlternate=#444507
+BackgroundNormal=#3c3836
+DecorationFocus=#b8bb26
+DecorationHover=#b8bb26
+ForegroundActive=#b8bb26
+ForegroundInactive=#ebdbb2
+ForegroundLink=#fabd2f
+ForegroundNegative=#fb4934
+ForegroundNeutral=#83a598
+ForegroundNormal=#fbf1c7
+ForegroundPositive=#83a598
+ForegroundVisited=#feefcd
+
+[General]
+ColorScheme=noctalia
+Name=Breeze Dark
+Name[ar]=نسيم داكن
+Name[az]=Breeze - Tünd
+Name[bg]=Breeze Тъмен
+Name[bs]=Breeze tamna
+Name[ca@valencia]=Brisa fosca
+Name[ca]=Brisa fosca
+Name[cs]=Breeze Tmavé
+Name[da]=Breeze Dark
+Name[de]=Breeze Dunkel
+Name[el]=Breeze σκούρο
+Name[en_GB]=Breeze Dark
+Name[eo]=Breeze Dark
+Name[es]=Brisa oscuro
+Name[et]=Breeze tume
+Name[eu]=Breeze iluna
+Name[fi]=Tumma Breeze
+Name[fr]=Brise sombre
+Name[gl]=Brisa escura
+Name[he]=בריזה כהה
+Name[hi]=ब्रीज़ गहरा
+Name[hu]=Breeze Dark
+Name[ia]=Brisa obscure
+Name[id]=Breeze Gelap
+Name[is]=Breeze dökkt
+Name[it]=Brezza scuro
+Name[ja]=Breeze ダーク
+Name[ka]=Breeze მუქი
+Name[ko]=어두운 Breeze
+Name[lt]=Breeze tamsus
+Name[lv]=„Breeze“ tumšais
+Name[nb]=Breeze mørk
+Name[nl]=Breeze Dark
+Name[nn]=Breeze mørk
+Name[pa]=ਬਰੀਜ਼ ਗੂੜ੍ਹਾ
+Name[pl]=Ciemna Bryza
+Name[pt]=Brisa Escura
+Name[pt_BR]=Breeze Dark
+Name[ro]=Briză, întunecat
+Name[ru]=Breeze, тёмный вариант
+Name[sa]=वायुः अन्धकारः
+Name[sk]=Tmavý vánok
+Name[sl]=Sapica, temna
+Name[sr@ijekavian]=Поветарац тамни
+Name[sr@ijekavianlatin]=Povetarac tamni
+Name[sr@latin]=Povetarac tamni
+Name[sr]=Поветарац тамни
+Name[sv]=Breeze mörk
+Name[ta]=கரும் பிரீஸ்
+Name[tg]=Насими торик
+Name[tr]=Esinti Koyu
+Name[uk]=Темна Breeze
+Name[zh_CN]=Breeze 微风深色
+Name[zh_TW]=Breeze Dark
+shadeSortColumn=true
+
+[KDE]
+contrast=4
+frameContrast=0.2
+
+[WM]
+activeBackground=68,69,7
+activeBlend=246,246,213
+activeForeground=246,246,213
+inactiveBackground=40,40,40
+inactiveBlend=235,219,178
+inactiveForeground=235,219,178

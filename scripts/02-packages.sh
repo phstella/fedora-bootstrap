@@ -13,8 +13,12 @@ sudo dnf install -y $(cat "$REPO_DIR/packages/dnf.txt" | grep -v '^#' | grep -v 
 info "Installing Slack (native RPM)..."
 if ! rpm -q slack &>/dev/null; then
     slack_rpm="$(mktemp /tmp/slack-XXXXXX.rpm)"
-    curl -fLo "$slack_rpm" \
-        "https://downloads.slack-edge.com/desktop-releases/linux/x64/4.47.69/slack-4.47.69-0.1.el8.x86_64.rpm"
+    slack_url="$(curl -sI 'https://slack.com/downloads/instructions/linux?ddl=1&build=rpm' \
+        | grep -oP 'https://downloads\.slack-edge\.com\S+\.rpm' || true)"
+    if [[ -z "$slack_url" ]]; then
+        slack_url="https://downloads.slack-edge.com/desktop-releases/linux/x64/4.47.69/slack-4.47.69-0.1.el8.x86_64.rpm"
+    fi
+    curl -fLo "$slack_rpm" "$slack_url"
     sudo dnf install -y "$slack_rpm"
     rm -f "$slack_rpm"
 else

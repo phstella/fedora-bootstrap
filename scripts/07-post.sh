@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOTFILES_DIR="$HOME/arch-dotfiles"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
 info()  { printf '\033[1;34m[INFO]\033[0m  %s\n' "$*"; }
 warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
@@ -12,7 +13,7 @@ FF_PROFILE_DIR="$HOME/.mozilla/firefox"
 if [[ -d "$FF_PROFILE_DIR" ]]; then
     profile_path="$(find "$FF_PROFILE_DIR" -maxdepth 1 -name "*.default-release" -type d | head -1)"
     if [[ -n "$profile_path" ]]; then
-        cp "$DOTFILES_DIR/firefox/user.js" "$profile_path/user.js"
+        cp "$REPO_DIR/firefox/user.js" "$profile_path/user.js"
         info "  Copied to $profile_path/user.js"
     else
         warn "No Firefox profile found. Run Firefox once first, then re-run this script."
@@ -37,15 +38,8 @@ mkdir -p ~/Pictures/Wallpapers
 info "Rebuilding KDE service cache..."
 kbuildsycoca6 2>/dev/null || true
 
-# --- Set default text editor (Kate, since VS Code is removed) ---
+# --- Set default text editor (Kate, since VS Code is not included) ---
 info "Setting default text editor..."
 xdg-mime default org.kde.kate.desktop text/plain 2>/dev/null || true
 
-# --- Summary ---
 info "Post-install complete."
-if [[ -f "$DOTFILES_DIR/packages/pacman.txt" ]]; then
-    arch_pkg_count="$(wc -l < "$DOTFILES_DIR/packages/pacman.txt")"
-    info "Original Arch setup had $arch_pkg_count official packages."
-fi
-dnf_count="$(wc -l < "$(dirname "$(dirname "${BASH_SOURCE[0]}")")/packages/dnf.txt" | tr -d ' ')"
-info "Fedora bootstrap installed ~$dnf_count DNF packages + Flatpak apps."

@@ -1,25 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOTFILES_DIR="$HOME/arch-dotfiles"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
 info()  { printf '\033[1;34m[INFO]\033[0m  %s\n' "$*"; }
 warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 
-if [[ ! -d "$DOTFILES_DIR" ]]; then
-    info "Cloning dotfiles repo..."
-    git clone git@github.com:phstella/arch-dotfiles.git "$DOTFILES_DIR"
-fi
-
 # zsh is handled in 05-shell.sh, firefox is copied in 07-post.sh
 SKIP_PACKAGES=(zsh)
 
-cd "$DOTFILES_DIR"
+cd "$REPO_DIR"
 
 for pkg in */; do
     pkg="${pkg%/}"
 
-    [[ "$pkg" == "packages" || "$pkg" == "scripts" || "$pkg" == "firefox" ]] && continue
+    [[ "$pkg" == "packages" || "$pkg" == "scripts" || "$pkg" == "firefox" || "$pkg" == ".git" ]] && continue
 
     skip=false
     for s in "${SKIP_PACKAGES[@]}"; do
@@ -75,5 +71,13 @@ if [[ -f "$MIME_LIST" ]] && grep -q 'code-oss.desktop' "$MIME_LIST"; then
     sed -i 's/code-oss\.desktop/org.kde.kate.desktop/g' "$MIME_LIST"
     info "  Patched mimeapps.list: code-oss.desktop -> org.kde.kate.desktop (Kate)."
 fi
+
+# Noctalia & qt6ct: replace hardcoded /home/shepard with actual $HOME
+for cfg in "$HOME/.config/noctalia/settings.json" "$HOME/.config/qt6ct/qt6ct.conf"; do
+    if [[ -f "$cfg" ]] && grep -q '/home/shepard' "$cfg"; then
+        sed -i "s|/home/shepard|$HOME|g" "$cfg"
+        info "  Fixed hardcoded paths in $(basename "$cfg")."
+    fi
+done
 
 info "Dotfiles stowed."
