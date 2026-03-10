@@ -9,8 +9,15 @@ warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 
 # --- Firefox Betterfox user.js ---
 info "Installing Firefox user.js (Betterfox)..."
-FF_PROFILE_DIR="$HOME/.mozilla/firefox"
-if [[ -d "$FF_PROFILE_DIR" ]]; then
+FF_PROFILE_DIR=""
+for candidate in "$HOME/.mozilla/firefox" "$HOME/.config/mozilla/firefox"; do
+    if [[ -d "$candidate" ]]; then
+        FF_PROFILE_DIR="$candidate"
+        break
+    fi
+done
+
+if [[ -n "$FF_PROFILE_DIR" ]]; then
     profile_path="$(find "$FF_PROFILE_DIR" -maxdepth 1 -name "*.default-release" -type d | head -1)"
     if [[ -n "$profile_path" ]]; then
         cp "$REPO_DIR/firefox/user.js" "$profile_path/user.js"
