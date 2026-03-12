@@ -107,4 +107,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$PATH"
 
+alias cursor-check="$HOME/dev/cursor-update-scripts/check-cursor-version.sh"
+alias cursor-update="sudo $HOME/dev/cursor-update-scripts/update-cursor-fixed.sh"
+
 fastfetch
