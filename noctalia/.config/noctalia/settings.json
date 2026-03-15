@@ -17,10 +17,12 @@
         "overviewLayer": false,
         "pinnedApps": [
             "cursor",
-            "slack",
             "spotify-launcher",
             "code-oss",
-            "io.dbeaver.DBeaver"
+            "io.dbeaver.DBeaver",
+            "slack",
+            "io.dbeaver.DBeaverCommunity",
+            "org.mozilla.firefox"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -52,6 +54,7 @@
         "contentPadding": 2,
         "density": "default",
         "displayMode": "always_visible",
+        "enableExclusionZoneInset": true,
         "floating": false,
         "fontScale": 1,
         "frameRadius": 12,
@@ -97,6 +100,7 @@
                     "occupiedColor": "secondary",
                     "pillSize": 0.6,
                     "showApplications": false,
+                    "showApplicationsHover": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
@@ -339,6 +343,7 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": false,
+        "gridSnapScale": false,
         "monitorWidgets": [
         ],
         "overviewEnabled": true
@@ -367,7 +372,8 @@
         "onlySameOutput": true,
         "pinnedApps": [
             "org.mozilla.firefox",
-            "io.dbeaver.DBeaverCommunity"
+            "io.dbeaver.DBeaverCommunity",
+            "cursor"
         ],
         "pinnedStatic": false,
         "position": "bottom",
@@ -382,7 +388,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/shepard/.face",
+        "avatarImage": "/home/dmcdavi/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
@@ -494,7 +500,7 @@
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6500",
-        "enabled": false,
+        "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
@@ -670,13 +676,15 @@
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.37,
         "panelsAttachedToBar": true,
+        "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "centered",
         "settingsPanelSideBarCardStyle": false,
-        "tooltipsEnabled": true
+        "tooltipsEnabled": true,
+        "translucentWidgets": false
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/shepard/Pictures/Wallpapers",
+        "directory": "/home/dmcdavi/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
