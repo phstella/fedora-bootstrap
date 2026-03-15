@@ -4,6 +4,16 @@ set -euo pipefail
 info()  { printf '\033[1;34m[INFO]\033[0m  %s\n' "$*"; }
 warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 
+# --- RPM Fusion (Steam, multimedia codecs, etc.) ---
+if ! dnf repolist --enabled 2>/dev/null | grep -q rpmfusion-nonfree; then
+    info "Adding RPM Fusion (free + nonfree)..."
+    sudo dnf install -y \
+        "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+        "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+else
+    info "RPM Fusion already configured."
+fi
+
 # --- Terra repository (noctalia-shell) ---
 if ! dnf repolist --enabled 2>/dev/null | grep -q terra; then
     info "Adding Terra repository (noctalia-shell)..."

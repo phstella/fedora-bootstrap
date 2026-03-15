@@ -47,6 +47,7 @@ python3-gobject
 qt6ct
 slurp
 smartmontools
+steam
 stow
 unrar
 unzip
