@@ -366,6 +366,8 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
+            "org.mozilla.firefox",
+            "io.dbeaver.DBeaverCommunity"
         ],
         "pinnedStatic": false,
         "position": "bottom",
