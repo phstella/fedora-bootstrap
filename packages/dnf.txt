@@ -53,6 +53,7 @@ unrar
 unzip
 vim-enhanced
 wget
+winehq-stable
 wireplumber
 wl-clipboard
 wofi

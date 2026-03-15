@@ -40,6 +40,14 @@ else
     info "Twingate already configured."
 fi
 
+# --- WineHQ ---
+if ! dnf repolist --enabled 2>/dev/null | grep -q winehq; then
+    info "Adding WineHQ repository..."
+    sudo dnf config-manager addrepo --from-repofile="https://dl.winehq.org/wine-builds/fedora/$(rpm -E %fedora)/winehq.repo"
+else
+    info "WineHQ repository already configured."
+fi
+
 # --- Flathub (only for DBeaver) ---
 if ! flatpak remotes --columns=name 2>/dev/null | grep -q flathub; then
     info "Adding Flathub remote..."
