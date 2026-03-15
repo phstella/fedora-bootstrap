@@ -42,6 +42,19 @@ else
     info "uv already installed."
 fi
 
+info "Installing nvm and Node.js v24..."
+if [[ ! -d "$HOME/.nvm" ]]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if ! nvm ls 24 &>/dev/null; then
+    nvm install 24
+    nvm alias default 24
+else
+    info "Node v24 already installed."
+fi
+
 info "Installing Flatpak apps..."
 while IFS= read -r app; do
     [[ -z "$app" || "$app" == \#* ]] && continue

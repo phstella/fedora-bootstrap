@@ -31,7 +31,7 @@ nano
 NetworkManager
 noctalia-shell
 google-noto-color-emoji-fonts
-npm
+# npm — managed by nvm instead
 openssh
 p7zip
 papirus-icon-theme
