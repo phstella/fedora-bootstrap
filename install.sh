@@ -26,6 +26,7 @@ phases=(
     "06-stow.sh:Dotfile symlinks (GNU Stow + Fedora patches)"
     "07-post.sh:Post-install tweaks (Firefox, GTK, MIME)"
     "08-cursor.sh:Cursor IDE (install + keyring config)"
+    "09-ai-cli.sh:AI CLI tools (OpenAI Codex + Claude Code)"
 )
 
 info "Fedora Bootstrap — Hyprland + noctalia-shell"
