@@ -10,6 +10,15 @@ warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 info "Installing DNF packages..."
 sudo dnf install -y $(cat "$REPO_DIR/packages/dnf.txt" | grep -v '^#' | grep -v '^$')
 
+info "Ensuring wine64 symlink exists (needed by electron-winstaller on x64)..."
+if command -v wine &>/dev/null && ! command -v wine64 &>/dev/null; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$(command -v wine)" "$HOME/.local/bin/wine64"
+    info "  Created wine64 -> wine symlink in ~/.local/bin"
+else
+    info "  wine64 already available or wine not installed."
+fi
+
 info "Installing Slack (native RPM)..."
 if ! rpm -q slack &>/dev/null; then
     slack_rpm="$(mktemp /tmp/slack-XXXXXX.rpm)"

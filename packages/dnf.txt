@@ -27,6 +27,8 @@ kitty
 konsole
 libnotify
 lpf-spotify-client
+mono-core
+nuget
 nano
 NetworkManager
 noctalia-shell
