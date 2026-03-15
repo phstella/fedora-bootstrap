@@ -10,6 +10,15 @@ warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 info "Installing DNF packages..."
 sudo dnf install -y $(cat "$REPO_DIR/packages/dnf.txt" | grep -v '^#' | grep -v '^$')
 
+info "Ensuring wine64 symlink exists (needed by electron-winstaller on x64)..."
+if command -v wine &>/dev/null && ! command -v wine64 &>/dev/null; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$(command -v wine)" "$HOME/.local/bin/wine64"
+    info "  Created wine64 -> wine symlink in ~/.local/bin"
+else
+    info "  wine64 already available or wine not installed."
+fi
+
 info "Installing Slack (native RPM)..."
 if ! rpm -q slack &>/dev/null; then
     slack_rpm="$(mktemp /tmp/slack-XXXXXX.rpm)"
@@ -40,6 +49,19 @@ if ! command -v uv &>/dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
 else
     info "uv already installed."
+fi
+
+info "Installing nvm and Node.js v24..."
+if [[ ! -d "$HOME/.nvm" ]]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if ! nvm ls 24 &>/dev/null; then
+    nvm install 24
+    nvm alias default 24
+else
+    info "Node v24 already installed."
 fi
 
 info "Installing Flatpak apps..."

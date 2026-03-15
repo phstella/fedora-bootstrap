@@ -4,6 +4,16 @@ set -euo pipefail
 info()  { printf '\033[1;34m[INFO]\033[0m  %s\n' "$*"; }
 warn()  { printf '\033[1;33m[WARN]\033[0m  %s\n' "$*"; }
 
+# --- RPM Fusion (Steam, multimedia codecs, etc.) ---
+if ! dnf repolist --enabled 2>/dev/null | grep -q rpmfusion-nonfree; then
+    info "Adding RPM Fusion (free + nonfree)..."
+    sudo dnf install -y \
+        "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+        "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+else
+    info "RPM Fusion already configured."
+fi
+
 # --- Terra repository (noctalia-shell) ---
 if ! dnf repolist --enabled 2>/dev/null | grep -q terra; then
     info "Adding Terra repository (noctalia-shell)..."
@@ -28,6 +38,14 @@ if ! command -v twingate &>/dev/null && ! dnf repolist --enabled 2>/dev/null | g
     curl -s https://binaries.twingate.com/client/linux/install.sh | sudo bash
 else
     info "Twingate already configured."
+fi
+
+# --- WineHQ ---
+if ! dnf repolist --enabled 2>/dev/null | grep -q winehq; then
+    info "Adding WineHQ repository..."
+    sudo dnf config-manager addrepo --from-repofile="https://dl.winehq.org/wine-builds/fedora/$(rpm -E %fedora)/winehq.repo"
+else
+    info "WineHQ repository already configured."
 fi
 
 # --- Flathub (only for DBeaver) ---

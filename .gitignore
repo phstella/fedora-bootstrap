@@ -1,2 +1,3 @@
 *.bak
 *.omz-default
+gh/.config/gh/hosts.yml
